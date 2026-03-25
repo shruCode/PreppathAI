@@ -165,7 +165,7 @@ if (roadmapItem.status === status) {
     roadmapItem.status = status;
 
     await roadmapDoc.save();
-
+     
     // Calculate progress
     const totalDays = roadmapDoc.roadmap.length;
 
@@ -194,6 +194,32 @@ if (roadmapItem.status === status) {
   }
 };
    
+  // Delete / Reset Roadmap
+    const deleteRoadmap = async (req, res) => {
+    try {
+      const roadmap = await Roadmap.findOneAndDelete({
+       userId: req.user._id,
+      });
+
+       if (!roadmap) {
+        return res.status(404).json({
+          success: false,
+          message: "Roadmap not found",
+        });
+      }
+
+       res.status(200).json({
+        success: true,
+        message: "Roadmap deleted successfully",
+       });
+
+    } catch (error) {
+       res.status(500).json({
+        success: false,
+        message: error.message,
+       });
+    }
+};
 
 
-module.exports = { generateRoadmap, getRoadmap, updateRoadmapStatus };
+module.exports = { generateRoadmap, getRoadmap, updateRoadmapStatus, deleteRoadmap };
