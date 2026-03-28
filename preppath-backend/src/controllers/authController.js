@@ -94,4 +94,25 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+
+// Get Current User
+const getCurrentUser = async (req, res) => {
+  try {
+    const user = req.user;
+
+    res.status(200).json({
+      success: true,
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { registerUser, loginUser, getCurrentUser };
