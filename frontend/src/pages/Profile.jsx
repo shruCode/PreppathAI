@@ -62,97 +62,109 @@ const Profile = () => {
 
   return (
     <>
-    <Navbar />
-    <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Complete Your Profile</h2>
+    <div className="min-h-screen bg-gradient-to-br from-black via-[#0f172a] to-[#1e1b4b]">
+      <Navbar />
 
-        {/* Target Company */}
-        <select
-          name="targetCompany"
-          value={formData.targetCompany}
-          onChange={handleChange}
-          required
-          style={styles.input}
+      <div className="min-h-screen bg-gradient-to-br from-black via-[#0f172a] to-[#1e1b4b] flex items-center justify-center p-6 text-white">
+
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-white/10 shadow-[0_0_25px_rgba(59,130,246,0.2)] flex flex-col gap-4"
         >
-          <option value="">Select Target Company</option>
-          <option value="TCS">TCS</option>
-          <option value="Infosys">Infosys</option>
-          <option value="Wipro">Wipro</option>
-          <option value="Accenture">Accenture</option>
-        </select>
+          <h2 className="text-2xl font-bold text-center mb-2">
+            Complete Your Profile
+          </h2>
 
-        {/* Skill Levels */}
-        <label>DSA Level</label>
-        <select name="dsa" value={formData.skillLevel.dsa} onChange={handleChange} required style={styles.input}>
-          <option value="">Select</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
+          {/* Target Company */}
+          <select
+            name="targetCompany"
+            value={formData.targetCompany}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="" className="text-black">
+              Select Target Company
+            </option>
+            <option value="TCS" className="text-black">TCS</option>
+            <option value="Infosys" className="text-black">Infosys</option>
+            <option value="Wipro" className="text-black">Wipro</option>
+            <option value="Accenture" className="text-black">Accenture</option>
+          </select>
 
-        <label>Aptitude Level</label>
-        <select name="aptitude" value={formData.skillLevel.aptitude} onChange={handleChange} required style={styles.input}>
-          <option value="">Select</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
+          {/* Skill Levels */}
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-300">DSA Level</label>
+            <select
+              name="dsa"
+              value={formData.skillLevel.dsa}
+              onChange={handleChange}
+              required
+              className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" className="text-black">Select</option>
+              <option value="beginner" className="text-black">Beginner</option>
+              <option value="intermediate" className="text-black">Intermediate</option>
+              <option value="advanced" className="text-black">Advanced</option>
+            </select>
+          </div>
 
-        <label>HR Level</label>
-        <select name="hr" value={formData.skillLevel.hr} onChange={handleChange} required style={styles.input}>
-          <option value="">Select</option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
-        </select>
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-300">Aptitude Level</label>
+            <select
+              name="aptitude"
+              value={formData.skillLevel.aptitude}
+              onChange={handleChange}
+              required
+              className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+              <option value="" className="text-black">Select</option>
+              <option value="beginner" className="text-black">Beginner</option>
+              <option value="intermediate" className="text-black">Intermediate</option>
+              <option value="advanced" className="text-black">Advanced</option>
+            </select>
+          </div>
 
-        {/* Available Days */}
-        <input
-          type="number"
-          name="availableDays"
-          placeholder="Available Days"
-          value={formData.availableDays}
-          onChange={handleChange}
-          required
-          style={styles.input}
-        />
+          <div className="flex flex-col gap-2">
+            <label className="text-sm text-gray-300">HR Level</label>
+            <select
+              name="hr"
+              value={formData.skillLevel.hr}
+              onChange={handleChange}
+              required
+              className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-pink-500"
+            >
+              <option value="" className="text-black">Select</option>
+              <option value="beginner" className="text-black">Beginner</option>
+              <option value="intermediate" className="text-black">Intermediate</option>
+              <option value="advanced" className="text-black">Advanced</option>
+            </select>
+          </div>
 
-        <button type="submit" disabled={loading} style={styles.button}>
-          {loading ? "Saving..." : "Save Profile"}
-        </button>
-      </form>
+          {/* Available Days */}
+          <input
+            type="number"
+            name="availableDays"
+            placeholder="Available Days"
+            value={formData.availableDays}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          {/* Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50 shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+          >
+            {loading ? "Saving..." : "Save Profile"}
+          </button>
+        </form>
+      </div>
     </div>
     </>
   );
 };
 
 export default Profile;
-
-
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    width: "300px",
-    gap: "10px",
-  },
-  input: {
-    padding: "10px",
-    fontSize: "16px",
-  },
-  button: {
-    padding: "10px",
-    backgroundColor: "#2196F3",
-    color: "#fff",
-    border: "none",
-    cursor: "pointer",
-  },
-};

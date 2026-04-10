@@ -45,9 +45,15 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-[#0f172a] to-[#1e1b4b]">
+      
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white/5 backdrop-blur-lg p-8 rounded-2xl shadow-lg w-[350px] border border-white/10 flex flex-col gap-4"
+      >
+        <h2 className="text-2xl font-bold text-white text-center mb-2">
+          Welcome Back
+        </h2>
 
         <input
           type="email"
@@ -56,7 +62,7 @@ const Login = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          style={styles.input}
+          className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
         />
 
         <input
@@ -66,17 +72,21 @@ const Login = () => {
           value={formData.password}
           onChange={handleChange}
           required
-          style={styles.input}
+          className="bg-transparent border border-gray-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
         />
 
-        <button type="submit" disabled={loading} style={styles.button}>
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 rounded-lg font-semibold hover:opacity-90 transition disabled:opacity-50"
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <p>
+        <p className="text-gray-400 text-sm text-center mt-2">
           Don’t have an account?{" "}
           <span
-            style={styles.link}
+            className="text-blue-400 cursor-pointer hover:underline"
             onClick={() => navigate("/register")}
           >
             Register
@@ -88,35 +98,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    width: "300px",
-    gap: "10px",
-  },
-  input: {
-    padding: "10px",
-    fontSize: "16px",
-  },
-  button: {
-    padding: "10px",
-    backgroundColor: "#4CAF50",
-    color: "#fff",
-    border: "none",
-    cursor: "pointer",
-  },
-  link: {
-    color: "blue",
-    cursor: "pointer",
-  },
-};
