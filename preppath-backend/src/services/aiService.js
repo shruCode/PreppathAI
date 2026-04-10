@@ -2,17 +2,32 @@ const axios = require("axios");
 
 const generateRoadmapFromAI = async (profileData) => {
   try {
+    console.log("Sending to AI:", profileData);
     const response = await axios.post(
       `${process.env.AI_SERVICE_URL}/generate-roadmap`,
       profileData
     );
 
-    // return response.data;
+    console.log("AI Response:", response.data);
+    return response.data;
     
   } catch (error) {
-    console.error("AI Service Error:", error.message);
-    throw new Error("Failed to generate roadmap from AI service");
+  console.error("🔥 FULL AI ERROR:");
+
+  if (error.response) {
+    // Server responded with error
+    console.error("Response Data:", error.response.data);
+    console.error("Status:", error.response.status);
+  } else if (error.request) {
+    // No response received
+    console.error("No response received:", error.request);
+  } else {
+    // Other error
+    console.error("Error Message:", error.message);
   }
+
+  throw new Error("Failed to generate roadmap from AI service");
+}
 };
 
 module.exports = { generateRoadmapFromAI };
