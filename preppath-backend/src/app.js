@@ -4,10 +4,7 @@ const cors = require("cors");
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: "https://preppath-frontend.vercel.app",
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
 // Basic Route (Test Route)
