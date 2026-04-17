@@ -9,7 +9,7 @@ from question_bank import get_questions
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",  # React app
+    "https://preppath.vercel.app",  # React app
 ]
 
 

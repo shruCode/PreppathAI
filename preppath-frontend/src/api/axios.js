@@ -8,7 +8,7 @@ export const setLogoutHandler = (handler) => {
 };
 
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://node-backend.onrender.com/api",
 });
 
 // Attach token to every request
