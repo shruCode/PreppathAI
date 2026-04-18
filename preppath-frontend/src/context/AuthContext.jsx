@@ -18,7 +18,7 @@ useEffect(() => {
       setToken(storedToken);
 
       // 🔥 Fetch user from backend
-      const res = await fetch("http://preppath-8ik3.onrender.com/api/auth/me", {
+      const res = await fetch("https://preppath-8ik3.onrender.com/api/auth/me", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
